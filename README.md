@@ -2,6 +2,8 @@
 
 A web app to help visualize sorting algorithms in action, built with [React JS](https://react.dev/). 
 
+Publicly available at [sort.asalmi.com](https://sort.asalmi.com)
+
 Note: As this app was built when I was still in school, it is not responsive and best viewed on a computer screen.
 
 ## Technologies Used
