@@ -1,6 +1,6 @@
 {
-  "name": "sort2.0",
-  "version": "0.1.0",
+  "name": "sorting-algorithms-visualizer",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.2",

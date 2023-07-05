@@ -1,7 +1,7 @@
 .App {
     text-align: center;
-    min-height: 98vh;
-    min-width: 880px;
+    height: 95vh;
+    min-width: 900px;
     font-size: calc(10px + 1vmin);
     color: #000000;
 }
@@ -16,6 +16,5 @@ body {
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+        monospace;
 }
-  

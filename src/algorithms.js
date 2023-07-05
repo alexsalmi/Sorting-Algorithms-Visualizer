@@ -2,7 +2,6 @@ import utils from './utils.js'
 import colors from './colors.js';
 
 import SolveStep from './classes.js';
-import { AttachFileSharp } from '@material-ui/icons';
 
 const algorithms = {
     insertion: (values) => {

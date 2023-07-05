@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import '../styles/App.css';
 import { Box, Grid } from '@material-ui/core';
 
@@ -9,12 +9,12 @@ import utils from '../utils.js';
 import SolveStep from '../classes.js'
 
 function App() {
-  const [size,    setSize]   =  useState(55);
-  const [unique,  setUnique] =  useState(false);
-  const [data,    setData]   =  useState(utils.randomize(size, unique));
-  const [algo,    setAlgo]   =  useState('insertion');
-  const [delay,   setDelay]  =  useState(500);
-  const [steps,   setSteps]  =  useState(utils.getSolutionSteps(data, algo));
+  const [size, setSize] = useState(55);
+  const [unique, setUnique] = useState(false);
+  const [data, setData] = useState(utils.randomize(size, unique));
+  const [algo, setAlgo] = useState('insertion');
+  const [delay, setDelay] = useState(500);
+  const [steps, setSteps] = useState(utils.getSolutionSteps(data, algo));
   const [stepInd, setStepInd] = useState(0);
   const [solving, setSolving] = useState(false);
 
@@ -38,11 +38,11 @@ function App() {
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      if(solving && stepInd !== steps.length){
+      if (solving && stepInd !== steps.length) {
         setData(utils.performStep(data, steps[stepInd]));
-        setStepInd(stepInd => stepInd+1);
+        setStepInd(stepInd => stepInd + 1);
       }
-      else if(stepInd === steps.length){
+      else if (stepInd === steps.length) {
         setSolving(solving => false);
       }
     }, delay);
@@ -52,27 +52,27 @@ function App() {
   })
 
   const step = (instruction) => {
-    switch (instruction){
+    switch (instruction) {
       case 'next':
-        if(stepInd !== steps.length){
+        if (stepInd !== steps.length) {
           setData(utils.performStep(data, steps[stepInd]));
-          setStepInd(stepInd => stepInd+1);
+          setStepInd(stepInd => stepInd + 1);
         }
         break;
       case 'back':
-        if(stepInd > 1){
-          setData(utils.performInverseStep(data, steps, stepInd-1));
-          setStepInd(stepInd-1);
+        if (stepInd > 1) {
+          setData(utils.performInverseStep(data, steps, stepInd - 1));
+          setStepInd(stepInd - 1);
         }
-        else if(stepInd === 1) {
-          let initStep =  new SolveStep('init');
+        else if (stepInd === 1) {
+          let initStep = new SolveStep('init');
           setData(utils.performStep(data, initStep));
           setStepInd(0);
         }
         break;
       case 'end': {
         let newData = data;
-        for(let i=stepInd; i<steps.length; i++){
+        for (let i = stepInd; i < steps.length; i++) {
           newData = utils.performStep(data, steps[i]);
         }
         setData(newData);
@@ -81,10 +81,10 @@ function App() {
       }
       case 'beginning':
         let newData = data;
-        for(let i=stepInd-1; i>1; i--){
+        for (let i = stepInd - 1; i > 1; i--) {
           newData = utils.performInverseStep(data, steps, i);
         }
-        let initStep =  new SolveStep('init');
+        let initStep = new SolveStep('init');
         setData(utils.performStep(newData, initStep));
         setStepInd(0);
         break;
@@ -95,38 +95,38 @@ function App() {
 
   return (
     <div className="App">
-    <Box height="98vh"> 
-      <Grid 
-        container
-        direction="row"
-        style={{height: "100%"}}
-      >
-        <Grid item xs={12} 
-          style={{ height: "75%"}}
+      <Box height="100%">
+        <Grid
+          container
+          direction="row"
+          style={{ height: "95%" }}
         >
-          <DisplayArea data={data} stepInd={stepInd} />
+          <Grid item xs={12}
+            style={{ height: "75%" }}
+          >
+            <DisplayArea data={data} stepInd={stepInd} />
+          </Grid>
+          <Grid item xs={12}
+            style={{ height: "25%" }}
+          >
+            <ControlPanel
+              size={size}
+              setSize={setSize}
+              unique={unique}
+              setUnique={toggleUnique}
+              algo={algo}
+              setAlgo={changeAlgo}
+              delay={delay}
+              setDelay={setDelay}
+              solving={solving}
+              setSolving={setSolving}
+              randomize={randomizeData}
+              step={step}
+              progress={stepInd / steps.length * 100}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12} 
-          style={{ height: "25%" }}
-        >
-          <ControlPanel 
-            size={size}
-            setSize={setSize}
-            unique={unique}
-            setUnique={toggleUnique}
-            algo={algo}
-            setAlgo={changeAlgo}
-            delay={delay}
-            setDelay={setDelay}
-            solving={solving}
-            setSolving={setSolving}
-            randomize={randomizeData}
-            step={step}
-            progress={stepInd/steps.length*100}
-          />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
     </div>
   );
 }

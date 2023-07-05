@@ -1,3 +1,19 @@
+# Sorting Algorithms Visualizer
+
+A web app to help visualize sorting algorithms in action, built with [React JS](https://react.dev/). 
+
+Note: As this app was built when I was still in school, it is not responsive and best viewed on a computer screen.
+
+## Technologies Used
+- Code - [Javascript](https://www.javascript.com/)
+- Framework - [React JS](https://react.dev/)
+- Deployment - [AWS Amplify](https://aws.amazon.com/amplify/)
+
+## Background
+As I was wrapping up my college career and preparing for my first job at John Hancock, I wanted to prepare myself for the beginning of my career by starting a new project. I decided to build a web app in React for a few reasons: I had an interest in front-end development, I hadn't learned much React or Javascript in my college classes, and I knew I would be working in React once I started my new job. I decided to create a sorting algorithm visualizer as I had just gone through the interviewing process, where I had familiarized myself more with various sorting algorithms, and a React app was the perfect way to show off this new knowledge.
+#
+
+# React Docs
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
